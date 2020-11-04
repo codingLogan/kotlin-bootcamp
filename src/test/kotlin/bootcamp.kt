@@ -17,4 +17,21 @@ class BootCampTest {
         assertEquals("10", doElvisOperation(10))
         assertEquals("elvis operator", doElvisOperation(null))
     }
+
+    @Test
+    fun testList() {
+        val expectedList = mutableListOf<Int?>(null, null)
+        val actualList = mutableListOf<Int?>()
+        assertEquals(expectedList, addNullToList(actualList))
+
+        val expectedItem = 99
+        val testList = listOf(expectedItem, 11)
+        assertEquals(expectedItem, accessFirstListItem(testList))
+    }
+
+    @Test
+    fun testStrings() {
+        assertEquals("First Middle Last", stringConcat("First", "Last"))
+        assertEquals("10 + 9 = 19 fish", expressionConcat(10, 9))
+    }
 }
