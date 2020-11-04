@@ -1,9 +1,9 @@
 import java.util.*
 import bootcamp.*
 
-fun main() {
-    println("starting program")
-}
+//fun main() {
+//    println("starting program")
+//}
 //
 //val decorations = listOf ("rock", "pagoda", "plastic plant", "alligator", "flowerpot")
 //
@@ -50,14 +50,14 @@ fun main() {
 //            "Friday", "Saturday", "Sunday")
 //    return week[Random().nextInt(week.size)]
 //}
-//
-////fun main(args: Array<String>) {
-////    feedTheFish()
-////    swim()   // uses default speed
-////    swim("slow")   // positional argument
-////    swim(speed="turtle-like")   // named parameter
-////}
-//
+
+//fun main(args: Array<String>) {
+//    feedTheFish()
+//    swim()   // uses default speed
+//    swim("slow")   // positional argument
+//    swim(speed="turtle-like")   // named parameter
+//}
+
 //fun main() {
 //    // eager, creates a new list
 //    val eager = decorations.filter { it [0] == 'p' }
