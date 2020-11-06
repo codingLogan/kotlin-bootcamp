@@ -49,9 +49,14 @@ class Curry(name: String, spiciness: String,
     }
 }
 
+data class SpiceContainer (val spice: Spice) {
+    val label = spice.name
+}
+
 fun main() {
-    val curry = Curry("Logan's Curry", "mild")
-    print(curry.color)
-    print(curry.heat)
-    print(curry.name)
+    val spiceCabinet = listOf(SpiceContainer(Curry("Yellow Curry", "mild")),
+            SpiceContainer(Curry("Red Curry", "medium")),
+            SpiceContainer(Curry("Green Curry", "spicy")))
+
+    for(element in spiceCabinet) println(element.label)
 }
