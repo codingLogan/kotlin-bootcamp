@@ -28,6 +28,11 @@ class Aquarium (
 
 // Constructor, you can create secondary constructors and init blocks
 // if you provide a getter you must declare it with val not var
+
+// To subclass you must mark a class as open
+// override props and functions that are marked as open (they have to be open, just like classes)
+
+// object keyword creates singleton.  Example uses it for interface delegation
 fun main() {
     buildAquarium()
 }

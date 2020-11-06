@@ -7,7 +7,13 @@ class SimpleSpice(){
         get() {return 5 }
 }
 
-class Spice(var name: String, var spiciness: String = "mild") {
+//abstract class Spice(val name: String, val spiciness: String = "mild", color: SpiceColor) : SpiceColor by color {
+//    abstract fun prepareSpice()
+//}
+
+abstract class Spice(val name: String, val spiciness: String = "mild", color: SpiceColor) : SpiceColor by color {
+
+    abstract fun prepareSpice()
 
     val heat: Int
         get() {
@@ -20,21 +26,32 @@ class Spice(var name: String, var spiciness: String = "mild") {
         }
 }
 
+interface Grinder {
+    fun grind()
+}
+
+interface SpiceColor {
+    val color: String
+}
+
+object YellowSpice: SpiceColor {
+    override val color = "yellow"
+}
+
+class Curry(name: String, spiciness: String,
+            color: SpiceColor = YellowSpice) : Spice(name, spiciness, color), Grinder {
+
+    override fun grind() {
+        println("grind spice")
+    }
+    override fun prepareSpice() {
+        grind()
+    }
+}
+
 fun main() {
-    val simpleSpice = SimpleSpice()
-    println("${simpleSpice.name} ${simpleSpice.heat}")
-
-    val spices1 = listOf(
-            Spice("curry", "mild"),
-            Spice("pepper", "medium"),
-            Spice("cayenne", "spicy"),
-            Spice("ginger", "mild"),
-            Spice("red curry", "medium"),
-            Spice("green curry", "mild"),
-            Spice("hot pepper", "extremely spicy")
-    )
-
-    val spice = Spice("cayenne", spiciness = "spicy")
-    val spicelist = spices1.filter {it.heat < 5}
-    fun makeSalt() = Spice("Salt")
+    val curry = Curry("Logan's Curry", "mild")
+    print(curry.color)
+    print(curry.heat)
+    print(curry.name)
 }
