@@ -1,6 +1,16 @@
 package reading
 
+const val MAX_BOOKS = 3
+
 class Book (val title: String, val author: String, val year: String) {
+    companion object Constants {
+        const val BASE_URL = "baseurl"
+    }
+
+    fun printUrl() {
+        println("url is: $BASE_URL/$title.html")
+    }
+
     fun getInfo(): Pair<String, String> {
         return title to author
     }
@@ -8,6 +18,8 @@ class Book (val title: String, val author: String, val year: String) {
     fun getTriple(): Triple< String, String, String> {
         return Triple(title, author, year)
     }
+
+    fun canBorrow(userNumber: Int) = userNumber < MAX_BOOKS
 }
 
 fun createBookSet(): Set<String> {
@@ -32,4 +44,6 @@ fun main() {
     moreBooks.getOrPut("Jungle Book") { "Kipling"}
     moreBooks.getOrPut("Hamlet") { "Shakespeare" }
     println(moreBooks)
+
+    book.printUrl()
 }
