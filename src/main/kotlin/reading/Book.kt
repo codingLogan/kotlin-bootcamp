@@ -1,8 +1,10 @@
 package reading
 
+import java.util.*
+
 const val MAX_BOOKS = 3
 
-class Book (val title: String, val author: String, val year: String) {
+class Book (val title: String, val author: String, val year: String, public var pages: Int) {
     companion object Constants {
         const val BASE_URL = "baseurl"
     }
@@ -29,7 +31,7 @@ fun createBookSet(): Set<String> {
 fun main() {
     val book = Book("Tristram Adventures",
     "Deckard Cain",
-    "1991")
+    "1991", 100)
 
     val (title, author, year) = book.getTriple()
 
@@ -46,4 +48,19 @@ fun main() {
     println(moreBooks)
 
     book.printUrl()
+
+    println("make a puppy")
+    val puppy = Puppy()
+    puppy.playWithBook(book)
+}
+
+fun Book.getWeight(): Double = pages * 1.5
+fun Book.tornPages(tornPages: Int) = if ( pages >= tornPages ) pages -= tornPages else 0
+
+class Puppy {
+    fun playWithBook(book: Book) {
+        println("book has ${book.pages} pages")
+        book.tornPages(Random().nextInt(12))
+        println("book now has ${book.pages} pages")
+    }
 }
