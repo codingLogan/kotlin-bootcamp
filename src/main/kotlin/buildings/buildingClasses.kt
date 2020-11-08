@@ -12,9 +12,9 @@ class Brick: BaseBuildingMaterial() {
     override val numberNeeded = 8
 }
 
-class Building<T: BaseBuildingMaterial>(val material: T) {
-    val baseMaterialsNeeded = 100
-    val actualMaterialsNeeded: Int
+class Building<out T: BaseBuildingMaterial>(private val material: T) {
+    private val baseMaterialsNeeded = 100
+    private val actualMaterialsNeeded: Int
     get() {return material.numberNeeded * baseMaterialsNeeded}
     fun build() {
         println("type: ${material::class.simpleName}, needs $actualMaterialsNeeded")
